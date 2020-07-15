@@ -30,5 +30,4 @@ build/
 bin
 bin.zip
 *.backup
-gradle/
 .gradle
