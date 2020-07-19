@@ -5,7 +5,13 @@ data class Point3d(val x: Coordinate, val y: Coordinate, val z: Coordinate) {
         val ZERO_POINT = Point3d(Coordinate.ZERO, Coordinate.ZERO, Coordinate.ZERO);
     }
 
-    fun toVector(startPoint: Point3d): Vector3d {
+    constructor(x: Double, y: Double, z: Double) : this(Coordinate(x), Coordinate(y), Coordinate(z))
+
+    fun toVectorFromStart(startPoint: Point3d): Vector3d {
         return Vector3d(startPoint, this);
+    }
+
+    fun toVectorToDestination(destinationPoint: Point3d): Vector3d {
+        return Vector3d(this, destinationPoint);
     }
 }
