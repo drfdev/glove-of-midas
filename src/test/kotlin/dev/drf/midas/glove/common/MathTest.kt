@@ -8,25 +8,25 @@ class MathTest {
     @Test
     fun shouldAbs_whenNegativeCoordinateValue() {
         // arrange
-        val negative = Coordinate(-100)
+        val negative = Coordinate(-100.0)
 
         // act
         val absValue = abs(negative)
 
         // assert
-        assertEquals(100, absValue.value)
+        assertEquals(100.0, absValue.value, 0.001)
     }
 
     @Test
     fun shouldNotAbs_whenPositiveCoordinateValue() {
         // arrange
-        val positive = Coordinate(100)
+        val positive = Coordinate(100.0)
 
         // act
         val absValue = abs(positive)
 
         // assert
-        assertEquals(100, absValue.value)
+        assertEquals(100.0, absValue.value, 0.001)
     }
 
     @Test
@@ -38,6 +38,6 @@ class MathTest {
         val absValue = abs(zero)
 
         // assert
-        assertEquals(0, absValue.value)
+        assertEquals(0.0, absValue.value, 0.001)
     }
 }

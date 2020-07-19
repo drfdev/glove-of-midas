@@ -10,8 +10,8 @@ class CoordinateTest {
     @Test
     fun shouldNotEquals_whenCoordinateHasDifferentValues() {
         // arrange
-        val x = Coordinate(10L)
-        val y = Coordinate(20L)
+        val x = Coordinate(10.0)
+        val y = Coordinate(20.0)
 
         // act
         val result = Objects.equals(x, y)
@@ -23,11 +23,11 @@ class CoordinateTest {
     @Test
     fun shouldEquals_whenCoordinateHasEqualsValues() {
         // arrange
-        val x = Coordinate(15L)
-        val y = Coordinate(15L)
+        val x = Coordinate(15.0)
+        val y = Coordinate(15.0)
 
         // act
-        val result = Objects.equals(x, y);
+        val result = Objects.equals(x, y)
 
         // assert
         assertTrue(result)

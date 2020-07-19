@@ -1,9 +1,11 @@
 package dev.drf.midas.glove.core.entity
 
-data class Coordinate(val value: Long) {
+data class Coordinate(val value: Double) {
     companion object {
-        val ZERO = Coordinate(0);
+        val ZERO = Coordinate(0.0);
     }
+
+    constructor(v: Long) : this(v.toDouble())
 
     operator fun unaryMinus(): Coordinate {
         return Coordinate(-value)
