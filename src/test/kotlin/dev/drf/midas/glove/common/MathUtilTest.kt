@@ -4,7 +4,7 @@ import dev.drf.midas.glove.core.entity.Coordinate
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class MathTest {
+class MathUtilTest {
     @Test
     fun shouldAbs_whenNegativeCoordinateValue() {
         // arrange

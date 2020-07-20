@@ -20,7 +20,7 @@ class Point3dTest {
         val point = Point3d(1.0, 1.0, 1.0)
 
         // act
-        val vector = point.toVectorFromStart(Point3d(0.0, 0.0, 0.0))
+        val vector = point.toVectorFrom(Point3d(0.0, 0.0, 0.0))
 
         // assert
         assertEquals(1.0, vector.point.x.value, 0.001)
@@ -34,7 +34,7 @@ class Point3dTest {
         val point = Point3d(2.0, 2.0, 2.0)
 
         // act
-        val vector = point.toVectorToDestination(Point3d(1.0, 1.0, 1.0))
+        val vector = point.toVectorTo(Point3d(1.0, 1.0, 1.0))
 
         // assert
         assertEquals(-1.0, vector.point.x.value, 0.001)
