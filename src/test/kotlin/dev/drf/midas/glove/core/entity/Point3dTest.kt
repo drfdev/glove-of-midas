@@ -1,5 +1,6 @@
 package dev.drf.midas.glove.core.entity
 
+import dev.drf.midas.glove.DELTA
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -23,9 +24,9 @@ class Point3dTest {
         val vector = point.toVectorFrom(Point3d(0.0, 0.0, 0.0))
 
         // assert
-        assertEquals(1.0, vector.point.x.value, 0.001)
-        assertEquals(1.0, vector.point.y.value, 0.001)
-        assertEquals(1.0, vector.point.z.value, 0.001)
+        assertEquals(1.0, vector.point.x.value, DELTA)
+        assertEquals(1.0, vector.point.y.value, DELTA)
+        assertEquals(1.0, vector.point.z.value, DELTA)
     }
 
     @Test
@@ -37,8 +38,8 @@ class Point3dTest {
         val vector = point.toVectorTo(Point3d(1.0, 1.0, 1.0))
 
         // assert
-        assertEquals(-1.0, vector.point.x.value, 0.001)
-        assertEquals(-1.0, vector.point.y.value, 0.001)
-        assertEquals(-1.0, vector.point.z.value, 0.001)
+        assertEquals(-1.0, vector.point.x.value, DELTA)
+        assertEquals(-1.0, vector.point.y.value, DELTA)
+        assertEquals(-1.0, vector.point.z.value, DELTA)
     }
 }
