@@ -1,7 +1,7 @@
 package dev.drf.midas.glove.core.entity.shape
 
-import dev.drf.midas.glove.core.entity.Point3d
-import dev.drf.midas.glove.core.entity.Vector3d
+import dev.drf.midas.glove.core.entity.basic.Point3d
+import dev.drf.midas.glove.core.entity.basic.Vector3d
 
 data class Cube(
         val center: Point3d,

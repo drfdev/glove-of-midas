@@ -1,4 +1,4 @@
-package dev.drf.midas.glove.core.entity
+package dev.drf.midas.glove.core.entity.basic
 
 data class Coordinate(val value: Double) {
     companion object {

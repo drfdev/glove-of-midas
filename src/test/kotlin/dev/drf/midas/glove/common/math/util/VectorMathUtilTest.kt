@@ -1,8 +1,9 @@
-package dev.drf.midas.glove.common
+package dev.drf.midas.glove.common.math.util
 
 import dev.drf.midas.glove.DELTA
-import dev.drf.midas.glove.core.entity.Point3d
-import dev.drf.midas.glove.core.entity.Vector3d
+import dev.drf.midas.glove.common.math.util.summation
+import dev.drf.midas.glove.core.entity.basic.Point3d
+import dev.drf.midas.glove.core.entity.basic.Vector3d
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

@@ -1,4 +1,4 @@
-package dev.drf.midas.glove.core.entity
+package dev.drf.midas.glove.core.entity.basic
 
 data class Point3d(val x: Coordinate, val y: Coordinate, val z: Coordinate) {
     companion object {

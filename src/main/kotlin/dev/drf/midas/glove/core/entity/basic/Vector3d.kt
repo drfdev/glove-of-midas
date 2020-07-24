@@ -1,4 +1,4 @@
-package dev.drf.midas.glove.core.entity
+package dev.drf.midas.glove.core.entity.basic
 
 class Vector3d(startPoint: Point3d, destinationPoint: Point3d) {
     val point: Point3d

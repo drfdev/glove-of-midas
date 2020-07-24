@@ -1,7 +1,7 @@
-package dev.drf.midas.glove.common
+package dev.drf.midas.glove.common.math.util
 
-import dev.drf.midas.glove.core.entity.Point3d
-import dev.drf.midas.glove.core.entity.Vector3d
+import dev.drf.midas.glove.core.entity.basic.Point3d
+import dev.drf.midas.glove.core.entity.basic.Vector3d
 import kotlin.math.sqrt
 
 fun summation(left: Vector3d, right: Vector3d): Vector3d {

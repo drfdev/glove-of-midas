@@ -1,5 +1,6 @@
-package dev.drf.midas.glove.core.entity
+package dev.drf.midas.glove.core.entity.basic
 
+import dev.drf.midas.glove.core.entity.basic.Coordinate
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test

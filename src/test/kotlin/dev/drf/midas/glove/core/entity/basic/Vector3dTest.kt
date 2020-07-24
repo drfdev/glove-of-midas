@@ -1,5 +1,7 @@
-package dev.drf.midas.glove.core.entity
+package dev.drf.midas.glove.core.entity.basic
 
+import dev.drf.midas.glove.core.entity.basic.Point3d
+import dev.drf.midas.glove.core.entity.basic.Vector3d
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

@@ -1,7 +1,8 @@
-package dev.drf.midas.glove.common
+package dev.drf.midas.glove.common.math.util
 
 import dev.drf.midas.glove.DELTA
-import dev.drf.midas.glove.core.entity.Coordinate
+import dev.drf.midas.glove.common.math.util.abs
+import dev.drf.midas.glove.core.entity.basic.Coordinate
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
