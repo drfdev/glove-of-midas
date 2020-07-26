@@ -79,4 +79,15 @@ class MathUtilTest {
         assertEquals(0.0, negative.value, DELTA)
         assertEquals(zero.value, negative.value, DELTA)
     }
+
+    @Test
+    fun should_when() {
+        // arrange
+        // TODO дописать остальные тесты
+
+        // act
+
+        // assert
+
+    }
 }
