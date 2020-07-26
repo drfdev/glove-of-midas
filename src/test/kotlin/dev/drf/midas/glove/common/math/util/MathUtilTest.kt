@@ -42,4 +42,41 @@ class MathUtilTest {
         // assert
         assertEquals(0.0, absValue.value, DELTA)
     }
+
+    @Test
+    fun shouldConvertCoordinate_whenPositiveValue() {
+        // arrange
+        val coordinate = Coordinate(5.0)
+
+        // act
+        val negative = negative(coordinate)
+
+        // assert
+        assertEquals(-5.0, negative.value, DELTA)
+    }
+
+    @Test
+    fun shouldConvertCoordinate_whenNegativeValue() {
+        // arrange
+        val coordinate = Coordinate(-4.0)
+
+        // act
+        val negative = negative(coordinate)
+
+        // assert
+        assertEquals(4.0, negative.value, DELTA)
+    }
+
+    @Test
+    fun shouldBeEqual_whenZeroValue() {
+        // arrange
+        val zero = Coordinate.ZERO
+
+        // act
+        val negative = negative(zero)
+
+        // assert
+        assertEquals(0.0, negative.value, DELTA)
+        assertEquals(zero.value, negative.value, DELTA)
+    }
 }

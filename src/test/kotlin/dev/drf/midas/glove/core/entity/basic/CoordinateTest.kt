@@ -1,8 +1,7 @@
 package dev.drf.midas.glove.core.entity.basic
 
-import dev.drf.midas.glove.core.entity.basic.Coordinate
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertTrue
+import dev.drf.midas.glove.DELTA
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.util.*
 
@@ -32,5 +31,14 @@ class CoordinateTest {
 
         // assert
         assertTrue(result)
+    }
+
+    @Test
+    fun shouldCorrectConvert_whenUsedLongConstructor() {
+        // arrange
+        val coordinate = Coordinate(5)
+
+        // assert
+        assertEquals(5.0, coordinate.value, DELTA)
     }
 }
