@@ -1,7 +1,6 @@
 package dev.drf.midas.glove.common.math.util
 
 import dev.drf.midas.glove.DELTA
-import dev.drf.midas.glove.common.math.util.summation
 import dev.drf.midas.glove.core.entity.basic.Point3d
 import dev.drf.midas.glove.core.entity.basic.Vector3d
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -103,13 +102,131 @@ class VectorMathUtilTest {
     }
 
     @Test
-    fun should_when() {
+    fun shouldCorrectSubstract_whenTwoPositiveVector() {
         // arrange
-        // TODO дописать остальные тесты
+        val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(4.0, 4.0, 4.0))
+        val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(1.5, 2.0, 2.5))
 
         // act
+        val result = subtraction(value1, value2)
 
         // assert
+        assertEquals(2.5, result.x.value, DELTA)
+        assertEquals(2.0, result.y.value, DELTA)
+        assertEquals(1.5, result.z.value, DELTA)
+    }
 
+    @Test
+    fun shouldCorrectSubstract_whenZeroFromVector() {
+        // arrange
+        val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(1.7, 1.9, 2.1))
+        val value2 = Vector3d.ZERO_VECTOR
+
+        // act
+        val result = subtraction(value1, value2)
+
+        // assert
+        assertEquals(1.7, result.x.value, DELTA)
+        assertEquals(1.9, result.y.value, DELTA)
+        assertEquals(2.1, result.z.value, DELTA)
+    }
+
+    @Test
+    fun shouldCorrectSubstract_whenZeroToVector() {
+        // arrange
+        val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(1.7, 1.9, 2.1))
+        val value2 = Vector3d.ZERO_VECTOR
+
+        // act
+        val result = subtraction(value2, value1)
+
+        // assert
+        assertEquals(-1.7, result.x.value, DELTA)
+        assertEquals(-1.9, result.y.value, DELTA)
+        assertEquals(-2.1, result.z.value, DELTA)
+    }
+
+    @Test
+    fun shouldCorrectSubstract_whenZeroToZero() {
+        // arrange
+        val value1 = Vector3d.ZERO_VECTOR
+        val value2 = Vector3d.ZERO_VECTOR
+
+        // act
+        val result = subtraction(value1, value2)
+
+        // assert
+        assertEquals(0.0, result.x.value, DELTA)
+        assertEquals(0.0, result.y.value, DELTA)
+        assertEquals(0.0, result.z.value, DELTA)
+    }
+
+    @Test
+    fun shouldCorrectSubstract_whenFractionValue() {
+        // arrange
+        val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(0.02, 0.13, 0.09))
+        val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(0.01, 0.04, 0.07))
+
+        // act
+        val result = subtraction(value1, value2)
+
+        // assert
+        assertEquals(0.01, result.x.value, DELTA)
+        assertEquals(0.09, result.y.value, DELTA)
+        assertEquals(0.02, result.z.value, DELTA)
+    }
+
+    @Test
+    fun shouldUnitVector_whenNormalVector() {
+        // arrange
+        val value = Vector3d.X_NORMAL
+
+        // act
+        val result = toUnitVector(value)
+
+        // assert
+        assertEquals(1.0, result.x.value, DELTA)
+        assertEquals(0.0, result.y.value, DELTA)
+        assertEquals(0.0, result.z.value, DELTA)
+    }
+
+    @Test
+    fun shouldUnitVector_whenLongVector() {
+        // arrange
+        val value = Vector3d(Point3d.ZERO_POINT, Point3d(5.0, 5.0, 5.0))
+
+        // act
+        val result = toUnitVector(value)
+
+        // assert
+        val len = vectorLength(result)
+        assertEquals(1.0, len, DELTA)
+    }
+
+    @Test
+    fun shouldUnitVector_whenLongNormalVector() {
+        // arrange
+        val value = Vector3d(Point3d.ZERO_POINT, Point3d(0.0, 0.0, 7.0))
+
+        // act
+        val result = toUnitVector(value)
+
+        // assert
+        assertEquals(0.0, result.x.value, DELTA)
+        assertEquals(0.0, result.y.value, DELTA)
+        assertEquals(1.0, result.z.value, DELTA)
+    }
+
+    @Test
+    fun shouldUnitVector_whenFractionValue() {
+        // arrange
+        val value = Vector3d(Point3d.ZERO_POINT, Point3d(0.2, 0.3, 0.5))
+
+        // act
+        val result = toUnitVector(value)
+
+        // assert
+        val len = vectorLength(result)
+        assertEquals(1.0, len, DELTA)
     }
 }
