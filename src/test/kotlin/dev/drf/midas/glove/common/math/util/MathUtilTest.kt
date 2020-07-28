@@ -1,9 +1,8 @@
 package dev.drf.midas.glove.common.math.util
 
 import dev.drf.midas.glove.DELTA
-import dev.drf.midas.glove.common.math.util.abs
 import dev.drf.midas.glove.core.entity.basic.Coordinate
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class MathUtilTest {
@@ -81,13 +80,184 @@ class MathUtilTest {
     }
 
     @Test
-    fun should_when() {
+    fun shouldCompare_whenPositiveDouble() {
         // arrange
-        // TODO дописать остальные тесты
+        val double1 = 1.0
+        val double2 = 2.0
 
         // act
+        val result = doubleEquals(double1, double2)
 
         // assert
+        assertFalse(result)
+    }
 
+    @Test
+    fun shouldCompare_whenEqualPositiveDouble() {
+        // arrange
+        val double1 = 3.5
+        val double2 = 3.5
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldCompare_whenNegativeDouble() {
+        // arrange
+        val double1 = -4.0
+        val double2 = -2.7
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldCompare_whenEqualNegativeDouble() {
+        // arrange
+        val double1 = -2.2
+        val double2 = -2.2
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldCompare_whenDoubleNotEqualByDelta() {
+        // arrange
+        val double1 = 1.01
+        val double2 = 1.02
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldCompare_whenDoubleEqualByDelta() {
+        // arrange
+        val double1 = 3.001
+        val double2 = 3.002
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldCompare_whenCompareWithZero() {
+        // arrange
+        val double1 = 4.47
+        val double2 = 0.0
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldCompare_whenZeroCompare() {
+        // arrange
+        val double1 = 0.0
+        val double2 = 6.65
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldCompare_whenZeroEqualZero() {
+        // arrange
+        val double1 = 0.0
+        val double2 = 0.0
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldCompare_whenZeroEqualZeroWithDelta() {
+        // arrange
+        val double1 = 0.0001
+        val double2 = 0.0
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldCompare_whenZeroWithDeltaEqualZeroWithDelta() {
+        // arrange
+        val double1 = 0.0001
+        val double2 = 0.0002
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldCompare_whenBigValuesNotEqual() {
+        // arrange
+        val double1 = 995595939543.0
+        val double2 = 676575675675.0
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldCompare_whenBigValuesEqual() {
+        // arrange
+        val double1 = 995595939543.0
+        val double2 = 995595939543.0
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldCompare_whenBigValuesEqualWithDelta() {
+        // arrange
+        val double1 = 995595939543.00001
+        val double2 = 995595939543.00002
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertTrue(result)
     }
 }

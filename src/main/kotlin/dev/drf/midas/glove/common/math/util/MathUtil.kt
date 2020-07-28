@@ -12,6 +12,5 @@ fun negative(x: Coordinate): Coordinate {
 }
 
 fun doubleEquals(a: Double, b: Double): Boolean {
-    // IBM formula
-    return kotlin.math.abs(a / b - 1) < DELTA
+    return kotlin.math.abs(a - b) < DELTA
 }
