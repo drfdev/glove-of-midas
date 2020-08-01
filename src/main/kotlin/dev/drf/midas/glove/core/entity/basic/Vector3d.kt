@@ -23,4 +23,28 @@ class Vector3d(startPoint: Point3d, destinationPoint: Point3d) {
 
         point = Point3d(x, y, z)
     }
+
+    fun isZero(): Boolean {
+        return this == ZERO_VECTOR
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) {
+            return true
+        }
+        if (javaClass != other?.javaClass) {
+            return false
+        }
+
+        other as Vector3d
+        if (point != other.point) {
+            return false
+        }
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return point.hashCode()
+    }
 }

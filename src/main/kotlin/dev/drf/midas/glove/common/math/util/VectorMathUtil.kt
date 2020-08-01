@@ -2,6 +2,7 @@ package dev.drf.midas.glove.common.math.util
 
 import dev.drf.midas.glove.core.entity.basic.Point3d
 import dev.drf.midas.glove.core.entity.basic.Vector3d
+import kotlin.math.abs
 import kotlin.math.sqrt
 
 fun summation(left: Vector3d, right: Vector3d): Vector3d {
@@ -42,11 +43,17 @@ fun vectorLength(vector: Vector3d): Double {
 }
 
 fun isParallel(vector1: Vector3d, vector2: Vector3d): Boolean {
+    if (vector1.isZero() || vector2.isZero()) {
+        return false
+    }
     val cos = calculateCos(vector1, vector2)
-    return doubleEquals(cos, 1.0)
+    return doubleEquals(abs(cos), 1.0)
 }
 
 fun isOrthogonal(vector1: Vector3d, vector2: Vector3d): Boolean {
+    if (vector1.isZero() || vector2.isZero()) {
+        return false
+    }
     val cos = calculateCos(vector1, vector2)
     return doubleEquals(cos, 0.0)
 }
@@ -56,7 +63,7 @@ private fun calculateCos(vector1: Vector3d, vector2: Vector3d): Double {
     val len2 = vectorLength(vector2)
 
     if (doubleEquals(len1, 0.0) || doubleEquals(len2, 0.0)) {
-        throw ArithmeticException("Division by zero");
+        throw ArithmeticException("Division by zero")
     }
 
     val calcX = vector1.x * vector2.x

@@ -3,7 +3,7 @@ package dev.drf.midas.glove.common.math.util
 import dev.drf.midas.glove.DELTA
 import dev.drf.midas.glove.core.entity.basic.Point3d
 import dev.drf.midas.glove.core.entity.basic.Vector3d
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import kotlin.math.sqrt
 
@@ -289,5 +289,148 @@ class VectorMathUtilTest {
 
         // assert
         assertEquals(0.122, len, DELTA)
+    }
+
+    @Test
+    fun shouldParallel_whenEqualVectors() {
+        // arrange
+        val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(1.0, 2.0, 1.0))
+        val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(1.0, 2.0, 1.0))
+
+        // act
+        val result = isParallel(value1, value2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldNotParallel_whenNotParallel() {
+        // arrange
+        val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(2.0, 2.0, 3.0))
+        val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(1.0, 1.0, -3.0))
+
+        // act
+        val result = isParallel(value1, value2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldParallel_whenOppositeDirection() {
+        // arrange
+        val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(2.5, 2.0, 1.5))
+        val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(-2.5, -2.0, -1.5))
+
+        // act
+        val result = isParallel(value1, value2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldNotParallel_whenOneOfVectorIsZero() {
+        // arrange
+        val value1 = Vector3d.ZERO_VECTOR
+        val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(4.5, -2.0, -1.5))
+
+        // act
+        val result = isParallel(value1, value2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldNotParallel_whenBothVectorIsZero() {
+        // arrange
+        val value1 = Vector3d.ZERO_VECTOR
+        val value2 = Vector3d.ZERO_VECTOR
+
+        // act
+        val result = isParallel(value1, value2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldOrthogonal_whenXAndYNormalVector() {
+        // arrange
+        val value1 = Vector3d.X_NORMAL
+        val value2 = Vector3d.Y_NORMAL
+
+        // act
+        val result = isOrthogonal(value1, value2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldOrthogonal_whenXAndZNormalVector() {
+        // arrange
+        val value1 = Vector3d.X_NORMAL
+        val value2 = Vector3d.Z_NORMAL
+
+        // act
+        val result = isOrthogonal(value1, value2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldOrthogonal_whenZAndYNormalVector() {
+        // arrange
+        val value1 = Vector3d.Z_NORMAL
+        val value2 = Vector3d.Y_NORMAL
+
+        // act
+        val result = isOrthogonal(value1, value2)
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldNotOrthogonal_whenOneOfVectorIsZero() {
+        // arrange
+        val value1 = Vector3d.ZERO_VECTOR
+        val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(12.0, -10.0, 15.0))
+
+        // act
+        val result = isOrthogonal(value1, value2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldNotOrthogonal_whenBothVectorIsZero() {
+        // arrange
+        val value1 = Vector3d.ZERO_VECTOR
+        val value2 = Vector3d.ZERO_VECTOR
+
+        // act
+        val result = isOrthogonal(value1, value2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldNotOrthogonal_whenSomeVectors() {
+        // arrange
+        val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(2.5, 3.7, -2.1))
+        val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(3.4, -2.0, 3.5))
+
+        // act
+        val result = isOrthogonal(value1, value2)
+
+        // assert
+        assertFalse(result)
     }
 }
