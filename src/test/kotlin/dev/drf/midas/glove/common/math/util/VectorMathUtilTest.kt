@@ -5,6 +5,7 @@ import dev.drf.midas.glove.core.entity.basic.Point3d
 import dev.drf.midas.glove.core.entity.basic.Vector3d
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import kotlin.math.sqrt
 
 class VectorMathUtilTest {
     @Test
@@ -228,5 +229,65 @@ class VectorMathUtilTest {
         // assert
         val len = vectorLength(result)
         assertEquals(1.0, len, DELTA)
+    }
+
+    @Test
+    fun shouldCorrectLength_whenSingleVector() {
+        // arrange
+        val value = Vector3d(Point3d.ZERO_POINT, Point3d(1.0, 0.0, 0.0))
+
+        // act
+        val len = vectorLength(value)
+
+        // assert
+        assertEquals(1.0, len, DELTA)
+    }
+
+    @Test
+    fun shouldCorrectLength_whenSomeVector() {
+        // arrange
+        val value = Vector3d(Point3d.ZERO_POINT, Point3d(0.0, 3.0, 4.0))
+
+        // act
+        val len = vectorLength(value)
+
+        // assert
+        assertEquals(5.0, len, DELTA)
+    }
+
+    @Test
+    fun shouldCorrectLength_whenZeroVector() {
+        // arrange
+        val value = Vector3d.ZERO_VECTOR
+
+        // act
+        val len = vectorLength(value)
+
+        // assert
+        assertEquals(0.0, len, DELTA)
+    }
+
+    @Test
+    fun shouldCorrectLength_whenSomeVector2() {
+        // arrange
+        val value = Vector3d(Point3d.ZERO_POINT, Point3d(1.0, 2.0, 3.0))
+
+        // act
+        val len = vectorLength(value)
+
+        // assert
+        assertEquals(sqrt(14.0), len, DELTA)
+    }
+
+    @Test
+    fun shouldCorrectLength_whenVectorWithFractionValue() {
+        // arrange
+        val value = Vector3d(Point3d.ZERO_POINT, Point3d(0.01, 0.02, 0.12))
+
+        // act
+        val len = vectorLength(value)
+
+        // assert
+        assertEquals(0.122, len, DELTA)
     }
 }
