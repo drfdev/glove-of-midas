@@ -1,41 +1,52 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        mavenLocal()
+    }
+}
+
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+    id 'idea'
+    id 'application'
 }
 
-repositories {
-    mavenCentral()
+allprojects {
+    group 'dev.drf.midas.glove'
+    version '0.1'
+
+    apply plugin: 'kotlin'
+    apply plugin: 'idea'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+        mavenLocal()
+    }
+
+    dependencies {
+        implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
+        testImplementation 'org.junit.jupiter:junit-jupiter-params:5.3.2'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            showStandardStreams = true
+        }
+    }
 }
-
-apply plugin: 'kotlin'
-apply plugin: 'application'
-
-group 'dev.drf.midas.glove'
-version '0.1'
-
-mainClassName = 'dev.drf.midas.glove.MainKt'
 
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
-
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.3.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
+    compile project(':glove-of-midas-core')
 }
 
-test {
-    useJUnitPlatform()
+application {
+    mainClass = 'dev.drf.midas.glove.MainKt'
 }
 
-sourceSets {
-    main {
-        kotlin {
-            srcDirs += 'src/main/kotlin'
-        }
-    }
-    test {
-        kotlin {
-            srcDirs += 'test/main/kotlin'
-        }
-    }
-}
-
+applicationName = 'glove-of-midas'

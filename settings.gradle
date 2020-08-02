@@ -1,2 +1,3 @@
 rootProject.name = 'glove-of-midas'
 
+include 'glove-of-midas-core'
