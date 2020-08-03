@@ -4,7 +4,7 @@ import dev.drf.midas.glove.common.math.util.doubleEquals
 
 data class Coordinate(val value: Double) {
     companion object {
-        val ZERO = Coordinate(0.0);
+        val ZERO = Coordinate(0.0)
     }
 
     constructor(v: Long) : this(v.toDouble())
