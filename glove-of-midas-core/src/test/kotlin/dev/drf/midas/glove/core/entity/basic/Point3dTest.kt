@@ -1,9 +1,8 @@
 package dev.drf.midas.glove.core.entity.basic
 
 import dev.drf.midas.glove.DELTA
-import dev.drf.midas.glove.core.entity.basic.Coordinate
-import dev.drf.midas.glove.core.entity.basic.Point3d
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class Point3dTest {
@@ -43,5 +42,31 @@ class Point3dTest {
         assertEquals(-1.0, vector.point.x.value, DELTA)
         assertEquals(-1.0, vector.point.y.value, DELTA)
         assertEquals(-1.0, vector.point.z.value, DELTA)
+    }
+
+    @Test
+    fun shouldEquals_whenEqualPoint() {
+        // arrange
+        val point1 = Point3d(12.0, -7.0, 1.5)
+        val point2 = Point3d(12.0, -7.0, 1.5)
+
+        // act
+        val result = point1 == point2
+
+        // assert
+        assertTrue(result)
+    }
+
+    @Test
+    fun shouldEquals_whenEqualPointsValueByDelta() {
+        // arrange
+        val point1 = Point3d(12.00001, -7.00003, 1.50012)
+        val point2 = Point3d(12.00002, -7.00005, 1.50015)
+
+        // act
+        val result = point1 == point2
+
+        // assert
+        assertTrue(result)
     }
 }
