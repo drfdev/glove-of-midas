@@ -1,5 +1,7 @@
 package dev.drf.midas.glove.core.entity.basic
 
+import dev.drf.midas.glove.common.math.util.doubleEquals
+
 data class Coordinate(val value: Double) {
     companion object {
         val ZERO = Coordinate(0.0);
@@ -22,5 +24,22 @@ data class Coordinate(val value: Double) {
     }
     operator fun div(item: Coordinate): Coordinate {
         return Coordinate(value / item.value)
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) {
+            return true
+        }
+        if (javaClass != other?.javaClass) {
+            return false
+        }
+
+        other as Coordinate
+
+        return doubleEquals(value, other.value)
+    }
+
+    override fun hashCode(): Int {
+        return value.hashCode()
     }
 }
