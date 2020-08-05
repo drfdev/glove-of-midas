@@ -1,3 +1,3 @@
 rootProject.name = 'glove-of-midas'
 
-include 'glove-of-midas-core'
+include 'glove-of-midas-core', 'glove-of-midas-hand'

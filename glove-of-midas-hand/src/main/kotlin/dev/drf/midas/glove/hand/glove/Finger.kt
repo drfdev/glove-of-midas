@@ -1,4 +1,4 @@
-package dev.drf.midas.glove.core.midas
+package dev.drf.midas.glove.hand.glove
 
 import dev.drf.midas.glove.core.entity.shape.Cube
 

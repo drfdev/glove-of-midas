@@ -43,6 +43,13 @@ allprojects {
 
 dependencies {
     compile project(':glove-of-midas-core')
+    compile project(':glove-of-midas-hand')
+}
+
+project('glove-of-midas-hand') {
+    dependencies {
+        compile project(':glove-of-midas-core')
+    }
 }
 
 application {
