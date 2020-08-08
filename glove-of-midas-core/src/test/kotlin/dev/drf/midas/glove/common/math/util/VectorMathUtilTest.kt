@@ -103,7 +103,7 @@ class VectorMathUtilTest {
     }
 
     @Test
-    fun shouldCorrectSubstract_whenTwoPositiveVector() {
+    fun shouldCorrectSubtract_whenTwoPositiveVector() {
         // arrange
         val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(4.0, 4.0, 4.0))
         val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(1.5, 2.0, 2.5))
@@ -118,7 +118,7 @@ class VectorMathUtilTest {
     }
 
     @Test
-    fun shouldCorrectSubstract_whenZeroFromVector() {
+    fun shouldCorrectSubtract_whenZeroFromVector() {
         // arrange
         val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(1.7, 1.9, 2.1))
         val value2 = Vector3d.ZERO_VECTOR
@@ -133,7 +133,7 @@ class VectorMathUtilTest {
     }
 
     @Test
-    fun shouldCorrectSubstract_whenZeroToVector() {
+    fun shouldCorrectSubtract_whenZeroToVector() {
         // arrange
         val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(1.7, 1.9, 2.1))
         val value2 = Vector3d.ZERO_VECTOR
@@ -148,7 +148,7 @@ class VectorMathUtilTest {
     }
 
     @Test
-    fun shouldCorrectSubstract_whenZeroToZero() {
+    fun shouldCorrectSubtract_whenZeroToZero() {
         // arrange
         val value1 = Vector3d.ZERO_VECTOR
         val value2 = Vector3d.ZERO_VECTOR
@@ -163,7 +163,7 @@ class VectorMathUtilTest {
     }
 
     @Test
-    fun shouldCorrectSubstract_whenFractionValue() {
+    fun shouldCorrectSubtract_whenFractionValue() {
         // arrange
         val value1 = Vector3d(Point3d.ZERO_POINT, Point3d(0.02, 0.13, 0.09))
         val value2 = Vector3d(Point3d.ZERO_POINT, Point3d(0.01, 0.04, 0.07))
