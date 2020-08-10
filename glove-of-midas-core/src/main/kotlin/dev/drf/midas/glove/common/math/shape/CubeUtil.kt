@@ -1,11 +1,10 @@
 package dev.drf.midas.glove.common.math.shape
 
-import dev.drf.midas.glove.core.entity.basic.Vector3d
+import dev.drf.midas.glove.common.math.util.*
 import dev.drf.midas.glove.core.entity.shape.Cube
 import dev.drf.midas.glove.core.motion.Motion
 import dev.drf.midas.glove.core.motion.Path
 import dev.drf.midas.glove.core.motion.Rotation
-import dev.drf.midas.glove.core.motion.Velocity
 import dev.drf.midas.glove.core.time.TimePeriod
 
 fun moveCube(cube: Cube, motion: Motion, period: TimePeriod): Cube {
@@ -14,9 +13,9 @@ fun moveCube(cube: Cube, motion: Motion, period: TimePeriod): Cube {
     val forward = cube.forward;
     val top = cube.top;
 
-    // TODO
+    val movedCenter = movePoint(center, motion, period)
 
-    return cube
+    return Cube(movedCenter, sideLength, forward, top)
 }
 
 fun rotateCube(cube: Cube, rotate: Rotation, period: TimePeriod): Cube {
@@ -25,19 +24,24 @@ fun rotateCube(cube: Cube, rotate: Rotation, period: TimePeriod): Cube {
     val forward = cube.forward;
     val top = cube.top;
 
-    // TODO
+    val rotatedForward = rotateVector(forward, rotate, period)
+    val rotatedTop = rotateVector(top, rotate, period)
 
-    return cube
+    return Cube(center, sideLength, rotatedForward, rotatedTop)
 }
 
 fun detectMove(start: Cube, end: Cube, period: TimePeriod): Motion {
-    // TODO
-    return Motion(Vector3d.ZERO_VECTOR, Velocity(0.0))
+    val startPoint = start.center
+    val endPoint = end.center
+
+    return detectPointMove(startPoint, endPoint, period)
 }
 
 fun detectRotate(start: Cube, end: Cube, period: TimePeriod): Rotation {
-    // TODO
-    return Rotation(Vector3d.ZERO_VECTOR, Vector3d.ZERO_VECTOR, Velocity(0.0), Velocity(0.0))
+    val forwardRotate = detectVectorRotate(start.forward, end.forward, period)
+    val topRotate = detectVectorRotate(start.top, end.top, period)
+
+    return combineRotation(forwardRotate, topRotate)
 }
 
 fun moveByPath(cube: Cube, path: Path): Cube {

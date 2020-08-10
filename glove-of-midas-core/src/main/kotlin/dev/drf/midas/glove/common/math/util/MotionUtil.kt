@@ -13,19 +13,25 @@ fun movePoint(point: Point3d, motion: Motion, period: TimePeriod): Point3d {
     return point
 }
 
-fun rotateVector(vector: Vector3d, motion: Motion, period: TimePeriod): Vector3d {
+fun rotateVector(vector: Vector3d, rotate: Rotation, period: TimePeriod): Vector3d {
     // TODO
 
     return vector
 }
 
-fun detectMove(start: Point3d, end: Point3d, period: TimePeriod): Motion {
+fun detectPointMove(start: Point3d, end: Point3d, period: TimePeriod): Motion {
     // TODO
 
     return Motion(Vector3d.ZERO_VECTOR, Velocity(0.0))
 }
 
-fun detectRotate(start: Vector3d, end: Vector3d, period: TimePeriod): Rotation {
+fun detectVectorRotate(start: Vector3d, end: Vector3d, period: TimePeriod): Rotation {
+    // TODO
+
+    return Rotation(Vector3d.ZERO_VECTOR, Vector3d.ZERO_VECTOR, Velocity(0.0), Velocity(0.0))
+}
+
+fun combineRotation(first: Rotation, second: Rotation): Rotation {
     // TODO
 
     return Rotation(Vector3d.ZERO_VECTOR, Vector3d.ZERO_VECTOR, Velocity(0.0), Velocity(0.0))
