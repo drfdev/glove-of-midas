@@ -1,3 +1,3 @@
 package dev.drf.midas.glove
 
-val DELTA = 0.001
+const val DELTA = 0.001

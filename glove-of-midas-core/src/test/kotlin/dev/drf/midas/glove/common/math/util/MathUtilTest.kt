@@ -132,7 +132,7 @@ class MathUtilTest {
     }
 
     @Test
-    fun shouldCompare_whenDoubleNotEqualByDelta() {
+    fun shouldCompare_whenDoubleNotEqualBySecondDigit() {
         // arrange
         val double1 = 1.01
         val double2 = 1.02
@@ -145,10 +145,23 @@ class MathUtilTest {
     }
 
     @Test
-    fun shouldCompare_whenDoubleEqualByDelta() {
+    fun shouldCompare_whenDoubleNotEqualByThirdDigit() {
         // arrange
-        val double1 = 3.001
-        val double2 = 3.002
+        val double1 = 1.001
+        val double2 = 1.002
+
+        // act
+        val result = doubleEquals(double1, double2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldCompare_whenDoubleEqualByDigitPlace() {
+        // arrange
+        val double1 = 3.0001
+        val double2 = 3.0002
 
         // act
         val result = doubleEquals(double1, double2)
@@ -197,7 +210,7 @@ class MathUtilTest {
     }
 
     @Test
-    fun shouldCompare_whenZeroEqualZeroWithDelta() {
+    fun shouldCompare_whenZeroEqualZeroWithDigitPlace() {
         // arrange
         val double1 = 0.0001
         val double2 = 0.0
@@ -210,7 +223,7 @@ class MathUtilTest {
     }
 
     @Test
-    fun shouldCompare_whenZeroWithDeltaEqualZeroWithDelta() {
+    fun shouldCompare_whenZeroWithDigitPlaceEqualZeroWithDigitPlace() {
         // arrange
         val double1 = 0.0001
         val double2 = 0.0002
@@ -249,7 +262,7 @@ class MathUtilTest {
     }
 
     @Test
-    fun shouldCompare_whenBigValuesEqualWithDelta() {
+    fun shouldCompare_whenBigValuesEqualWithDigitPlace() {
         // arrange
         val double1 = 995595939543.00001
         val double2 = 995595939543.00002
@@ -305,7 +318,7 @@ class MathUtilTest {
 
                 val result = doubleEquals(d1, d2)
 
-                assertTrue(result)
+                assertTrue(result, "Failed when equals [$d1, $d2]")
             }
         }
     }
@@ -319,12 +332,12 @@ class MathUtilTest {
         // act - assert
         for (i in ceil.indices) {
             for (j in floor.indices) {
-                val d1 = floor[i]
+                val d1 = ceil[i]
                 val d2 = floor[j]
 
                 val result = doubleEquals(d1, d2)
 
-                assertFalse(result)
+                assertFalse(result, "Failed when equals [$d1, $d2]")
             }
         }
     }
@@ -343,7 +356,7 @@ class MathUtilTest {
 
                 val result = doubleEquals(d1, d2)
 
-                assertTrue(result)
+                assertTrue(result, "Failed when equals [$d1, $d2]")
             }
         }
     }
