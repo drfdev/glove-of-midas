@@ -260,4 +260,91 @@ class MathUtilTest {
         // assert
         assertTrue(result)
     }
+
+    @Test
+    fun shouldCorrectCompare_whenEqualsWithRounding() {
+        // arrange
+        val d1 = 123.0011
+        val d2 = 123.0017
+
+        // act
+        val result = doubleEquals(d1, d2)
+
+        // assert
+        assertFalse(result)
+    }
+
+    @Test
+    fun shouldEquals_whenCeilRounding() {
+        // arrange
+        val ceil = arrayOf(12.0010, 12.0011, 12.0012, 12.0013, 12.0014)
+
+        // act - assert
+        for (i in ceil.indices) {
+            for (j in 1 until ceil.size) {
+                val d1 = ceil[i]
+                val d2 = ceil[j]
+
+                val result = doubleEquals(d1, d2)
+
+                assertTrue(result)
+            }
+        }
+    }
+
+    @Test
+    fun shouldEquals_whenFloorRounding() {
+        // arrange
+        val floor = arrayOf(12.0015, 12.0016, 12.0017, 12.0018, 12.0019)
+
+        // act - assert
+        for (i in floor.indices) {
+            for (j in 1 until floor.size) {
+                val d1 = floor[i]
+                val d2 = floor[j]
+
+                val result = doubleEquals(d1, d2)
+
+                assertTrue(result)
+            }
+        }
+    }
+
+    @Test
+    fun shouldNotEquals_whenCeilAndFloorRounding() {
+        // arrange
+        val ceil = arrayOf(12.0010, 12.0011, 12.0012, 12.0013, 12.0014)
+        val floor = arrayOf(12.0015, 12.0016, 12.0017, 12.0018, 12.0019)
+
+        // act - assert
+        for (i in ceil.indices) {
+            for (j in floor.indices) {
+                val d1 = floor[i]
+                val d2 = floor[j]
+
+                val result = doubleEquals(d1, d2)
+
+                assertFalse(result)
+            }
+        }
+    }
+
+    @Test
+    fun shouldEquals_whenCeilAndFloorRoundingWithDifferentBase() {
+        // arrange
+        val ceil = arrayOf(13.0010, 13.0011, 13.0012, 13.0013, 13.0014)
+        val floor = arrayOf(12.0015, 12.0016, 12.0017, 12.0018, 12.0019)
+
+        // act - assert
+        for (i in ceil.indices) {
+            for (j in floor.indices) {
+                val d1 = floor[i]
+                val d2 = floor[j]
+
+                val result = doubleEquals(d1, d2)
+
+                assertTrue(result)
+            }
+        }
+    }
 }
