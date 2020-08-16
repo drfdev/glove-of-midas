@@ -2,8 +2,11 @@ package dev.drf.midas.glove.common.math.util
 
 import dev.drf.midas.glove.DELTA
 import dev.drf.midas.glove.core.entity.basic.Coordinate
+import dev.drf.midas.glove.core.entity.basic.Point3d
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import kotlin.math.sqrt
+import kotlin.random.Random
 
 class MathUtilTest {
     @Test
@@ -359,5 +362,87 @@ class MathUtilTest {
                 assertTrue(result, "Failed when equals [$d1, $d2]")
             }
         }
+    }
+
+    @Test
+    fun shouldCalculateDistance_whenSimplePoints() {
+        // arrange
+        val first = Point3d.ZERO_POINT
+        val second = Point3d(1.0, 0.0, 0.0)
+
+        // act
+        val dist = distance(first, second)
+
+        // assert
+        assertEquals(1.0, dist, DELTA)
+    }
+
+    @Test
+    fun shouldCalculateDistance_whenEqualPoints() {
+        // arrange
+        val first = Point3d(1.0, 2.0, 3.0)
+        val second = Point3d(1.0, 2.0, 3.0)
+
+        // act
+        val dist = distance(first, second)
+
+        // assert
+        assertEquals(0.0, dist, DELTA)
+    }
+
+    @Test
+    fun shouldCalculateDistance_whenSomePoints() {
+        // arrange
+        val first = Point3d(1.0, 1.0, 1.0)
+        val second = Point3d(3.0, 3.0, 3.0)
+        val expected = sqrt(12.0)
+
+        // act
+        val dist = distance(first, second)
+
+        // assert
+        assertEquals(expected, dist, DELTA)
+    }
+
+    @Test
+    fun shouldCalculateDistance_whenNegativeCoordinatePoints() {
+        // arrange
+        val first = Point3d(-1.0, -1.0, -1.0)
+        val second = Point3d(-3.0, -3.0, -3.0)
+        val expected = sqrt(12.0)
+
+        // act
+        val dist = distance(first, second)
+
+        // assert
+        assertEquals(expected, dist, DELTA)
+    }
+
+    @Test
+    fun shouldCalculateDistance_whenRandomValuePoints() {
+        repeat(10) {
+            // arrange
+            val x1 = rand()
+            val y1 = rand()
+            val z1 = rand()
+            val x2 = rand()
+            val y2 = rand()
+            val z2 = rand()
+
+            val first = Point3d(x1, y1, z1)
+            val second = Point3d(x2, y2, z2)
+
+            val expected = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + (z1 - z2) * (z1 - z2))
+
+            // act
+            val dist = distance(first, second)
+
+            // assert
+            assertEquals(expected, dist, DELTA)
+        }
+    }
+
+    private fun rand(): Double {
+        return Random.nextDouble(51.3257, 52.4557)
     }
 }
