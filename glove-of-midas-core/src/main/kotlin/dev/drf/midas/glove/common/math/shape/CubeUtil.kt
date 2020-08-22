@@ -8,21 +8,14 @@ import dev.drf.midas.glove.core.motion.Rotation
 import dev.drf.midas.glove.core.time.TimePeriod
 
 fun moveCube(cube: Cube, motion: Motion, period: TimePeriod): Cube {
-    val center = cube.center;
-    val sideLength = cube.sideLength;
-    val forward = cube.forward;
-    val top = cube.top;
-
+    val (center, sideLength, forward,top ) = cube
     val movedCenter = movePoint(center, motion, period)
 
     return Cube(movedCenter, sideLength, forward, top)
 }
 
 fun rotateCube(cube: Cube, rotate: Rotation, period: TimePeriod): Cube {
-    val center = cube.center;
-    val sideLength = cube.sideLength;
-    val forward = cube.forward;
-    val top = cube.top;
+    val (center, sideLength, forward, top) = cube
 
     val rotatedForward = rotateVector(forward, rotate, period)
     val rotatedTop = rotateVector(top, rotate, period)

@@ -12,6 +12,7 @@ Action:
 | Bugfix | Correcting defects or bugs |
 | Test | Adding or correcting tests |
 | Notice | Any changes related to documentation or description |
+| Refactor | Code refactoring |
 
 ---
 
