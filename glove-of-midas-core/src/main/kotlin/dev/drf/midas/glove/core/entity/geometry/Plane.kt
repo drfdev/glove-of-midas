@@ -1,4 +1,4 @@
-package dev.drf.midas.glove.core.entity.shape
+package dev.drf.midas.glove.core.entity.geometry
 
 import dev.drf.midas.glove.core.entity.basic.Point3d
 
